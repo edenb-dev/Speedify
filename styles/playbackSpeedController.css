@@ -1,0 +1,94 @@
+/* original playback speed button */
+
+/* button - remove original playback button if detected.*/
+button[aria-label="Change speed"]:not([id="playback-speed-button"]) {
+
+	display: none;
+}
+
+/* playback speed button */
+
+/* button - style */
+#playback-speed-button {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: hsla(0,0%,100%,.7);
+    font-size:16.5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 32px;
+    padding: revert;
+    justify-content: center;
+    min-width: 32px;
+    position: relative;
+    width: 32px;
+    word-spacing: -4px;
+}
+
+/* button - onHover or when menu open active color */
+#playback-speed-button:hover,#menuContainer + #playback-speed-button {
+
+    color: #fff;
+}
+
+/* button - onPressed disable color. */
+#playback-speed-button:active ,#menuContainer + #playback-speed-button:active {
+
+    color: hsla(0,0%,100%,.7);
+}
+
+/* button - multi line design. */
+#playback-speed-button[data-multi-line="true"] {
+
+	line-height: 9px;
+    word-spacing: 40px;
+    font-size: 13px;
+	font-weight: bold;
+    text-align: right;
+}
+
+/* playback speed button - tooltip */
+
+/* tooltip - style */
+#playback-speed-button::after {
+
+	content: attr(aria-label);
+	opacity:0;
+	
+	color: #fff;
+	background-color: #282828;
+	font-size: 13.5px;
+    border-radius: 4px;
+    padding: 5px 8px;
+    
+    line-height: initial;
+	word-spacing: initial;
+	font-weight: initial;
+ 
+    position: fixed;
+    transform: translateY(-41px);
+	z-index: 2;
+	pointer-events: none;
+	
+	transition:0.5s;
+}
+
+/* tooltip - display onHover. */
+#playback-speed-button:hover::after {
+
+  	opacity:1;
+  	transition-delay:0.5s;
+}
+
+/* tooltip - hide when menu opened. */
+#menuContainer + #playback-speed-button:hover::after {
+
+  	opacity:0;
+  	transition:0.1s;
+}

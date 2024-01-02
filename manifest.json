@@ -1,0 +1,30 @@
+{
+    
+    "name": "Spotify Playback Speed Controller - Speedify",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "Restore Spotify's missing playback speed control effortlessly with Speedify. Open source at https://github.com/edenb-dev/Speedify",
+
+	"icons": {
+	    "16": "assets/logo/speedfiy16.png",
+	    "32": "assets/logo/speedfiy32.png",
+	    "48": "assets/logo/speedfiy48.png",
+	    "128": "assets/logo/speedfiy128.png"
+	},
+
+    "content_scripts": [
+      {
+        "matches": ["https://open.spotify.com/*"],
+        "js": ["scripts/domElementInterceptor.js"],
+        "run_at": "document_start",
+        "world": "MAIN"
+      },
+      {
+        "matches": ["https://open.spotify.com/*"],
+        "js": ["scripts/contentScript.js", "scripts/playbackSpeedController.js", "scripts/menuHandler.js"],
+        "css": ["styles/playbackSpeedController.css","styles/playbackSpeedMenu.css"],
+        "run_at": "document_start",
+        "world": "ISOLATED"
+      }
+    ]
+}

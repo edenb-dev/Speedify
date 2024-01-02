@@ -1,0 +1,94 @@
+/* playback speed menu */
+
+/* menu container - style */
+#menuContainer {
+
+	z-index: 2;
+	position: absolute;
+	bottom: 85px;
+	transform: translate(54px);
+	
+	-webkit-app-region: no-drag;
+    background-color: #282828;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 16px 24px rgba(0,0,0,.3),0 6px 8px rgba(0,0,0,.2);
+    box-shadow: 0 16px 24px rgba(0,0,0,.3),0 6px 8px rgba(0,0,0,.2);
+    max-height: calc(100vh - 24px);
+    max-width: 350px;
+    min-width: 160px;
+    padding: 4px
+}
+
+/* menu header */
+#menuContainer > span {
+
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+}
+
+/* menu items container */
+#menuContainer ul {
+
+    height: 436px;
+    overflow-y: auto
+}
+
+/* menu header & menu items - style */
+#menuContainer span:first-of-type, #menuContainer button {
+    -webkit-padding-end: 8px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    padding: 12px;
+    padding-inline-end:8px;
+    position: relative;
+    text-align: start;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%
+}
+
+/* menu items - style */
+#menuContainer button {
+
+    background: transparent;
+    border: 0;
+    color: hsla(0,0%,100%,.9);
+    gap: 12px;
+}
+
+/* menu items - onHover */
+#menuContainer button:hover {
+    background-color: hsla(0,0%,100%,.1);
+    color: #fff;
+}
+
+/* menu items - selected item */
+#menuContainer button[aria-checked=true] {
+    color: #1ed760
+}
+
+/* menu items - when input mechanism has limited accuracy */
+@media(pointer: coarse) {
+    #menuContainer button {
+        height:44px
+    }
+}
+
+/* menu items - when screen is large */
+@media (min-width: 768px) {
+	#menuContainer ul span {
+	    font-size: 0.875rem;
+	}
+}
