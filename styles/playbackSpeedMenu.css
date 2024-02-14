@@ -79,6 +79,17 @@
     color: #1ed760
 }
 
+#menuContainer button[aria-checked=true] span {
+	flex-grow: 1;
+	width:auto
+}
+
+#menuContainer button[aria-checked=true] svg {
+    width: var(--encore-graphic-size-decorative-smaller, 16px); 
+    height: var(--encore-graphic-size-decorative-smaller, 16px);
+    fill: currentcolor;
+}
+
 /* menu items - when input mechanism has limited accuracy */
 @media(pointer: coarse) {
     #menuContainer button {
