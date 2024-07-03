@@ -56,7 +56,7 @@ function isSpotifyLoadedSuccessfully() {
 
 function isPlayerControlPanelPresent() {
 	
-	const playerControlPanel = document.querySelector("div.player-controls div.player-controls__left");
+	const playerControlPanel = document.querySelector('div[data-testid="player-controls"] div > div');
 	
 	return (playerControlPanel !== null);
 }
@@ -69,7 +69,7 @@ function isPlayerControlPanelPresent() {
 
 function initializeController() {
 	
-	const playerControlPanel = document.querySelector("div.player-controls div.player-controls__left");
+	const playerControlPanel = document.querySelector('div[data-testid="player-controls"] div > div');
 	
 	const playbackSpeedController = new PlaybackSpeedController(playerControlPanel);
 	const menuHandler = new MenuHandler(playerControlPanel, playbackSpeedController);
