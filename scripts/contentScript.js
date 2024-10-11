@@ -17,7 +17,7 @@ function onLoad() {
 		this.attempt_SpotifyLoadedSuccessfully = ( this.attempt_SpotifyLoadedSuccessfully ?? 0 ) + 1;
 		
 		
-		if (this.attempt_SpotifyLoadedSuccessfully == 5) {
+		if (this.attempt_SpotifyLoadedSuccessfully == 10) {
 			console.debug('Speedify - Debug Info: Spotify did not load properly. ( User Action Required )\n\nPlease try reloading the page.');
 			return;
 		}
@@ -28,7 +28,15 @@ function onLoad() {
 	
 	if (!isPlayerControlPanelPresent()) {
 	
-		console.debug('Speedify - Critical Error: Unable to locate Spotify\'s control panel element. ( User Action Required )\n\nPlease try reloading the page. If the issue persists, rest assured an update to the extension will be arriving soon, expected within the next 24 hours. For any other concerns or inquiries regarding the extension, please don\'t hesitate to contact us via email. You can find our email address on the extension\'s page.');
+		this.attempt_layerControlPanelPresent = ( this.attempt_layerControlPanelPresent ?? 0 ) + 1;
+		
+		
+		if (this.attempt_layerControlPanelPresent == 20) {
+			console.debug('Speedify - Critical Error: Unable to locate Spotify\'s control panel element. ( User Action Required )\n\nPlease try reloading the page. If the issue persists, rest assured an update to the extension will be arriving soon, expected within the next 24 hours. For any other concerns or inquiries regarding the extension, please don\'t hesitate to contact us via email. You can find our email address on the extension\'s page.');
+			return;
+		}
+		
+		setTimeout(() => { onLoad(); }, 3000);
 		return;
 	}
 	
