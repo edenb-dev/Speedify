@@ -149,13 +149,12 @@ class PlaybackSpeedController {
 	 * Updates the playback speed.
 	 *
 	 * @param {number} selectedSpeed - The selected playback speed value.
+	 * @param {HTMLElement[]} mediaPlayer - The media player elements to update the playback speed for.
 	 */
 	
-	updatePlaybackSpeed(selectedSpeed) {
+	updatePlaybackSpeed(selectedSpeed, mediaPlayers = document.querySelectorAll('audio, video')) {
 		
-		const mediaPlayer = document.querySelector('audio[src], video[src]');
 		const btn_playbackSpeed = document.querySelector('#playback-speed-button');
-		
 		
 	    // Update controller text.
 		if (btn_playbackSpeed !== null)
@@ -165,8 +164,13 @@ class PlaybackSpeedController {
 	    this.setPlaybackSpeed(selectedSpeed);
 	    
 	    // Update playback speed.
-		if (mediaPlayer !== null)
-	    	mediaPlayer.playbackRate = selectedSpeed;
+		if (mediaPlayers !== null) {
+
+			mediaPlayers.forEach((mediaPlayer) => {
+
+				mediaPlayer.playbackRate = selectedSpeed;
+			});
+		}	
 	}
 	
 	/**
@@ -217,7 +221,7 @@ class PlaybackSpeedController {
 				element.addEventListener(event, () => {
 					
 					if (element.playbackRate !== this.getPlaybackSpeed()) 
-						this.updatePlaybackSpeed(this.getPlaybackSpeed());
+						this.updatePlaybackSpeed(this.getPlaybackSpeed(), [element]);
 				});
 			});
 		});
